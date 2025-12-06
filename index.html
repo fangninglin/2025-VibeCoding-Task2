@@ -1,37 +1,350 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name · Frontend Dev｜個人品牌網站</title>
+  <meta name="description" content="這是一個展示個人背景、前端技能、作品集與聯絡方式的個人品牌網站，提供訪客快速了解開發者的專長與專案成果。">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+    /* =========================================================
+        CSS:BASE — 全站基底樣式
+        ========================================================= */
+    /* CSS:BASE-START */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      background-color: #0f172a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 50;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #e6edf3;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      color: #9eb3c9;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .nav-link:hover {
+      color: #38bdf8;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    /* CSS:BASE-END */
+
+
+    /* =========================================================
+        CSS:HERO
+        ========================================================= */
+    /* CSS:HERO-START */
+    .section-hero {
+      text-align: center;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #e2e8f0;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      margin: 0.5rem auto 1.5rem auto;
+      color: #cbd5e1;
+    }
+
+    .hero-image {
+      margin: 2rem auto 0 auto;
+      max-width: 260px;
+    }
+
+    /* CSS:HERO-END */
+
+
+    /* =========================================================
+        CSS:ABOUT
+        ========================================================= */
+    /* CSS:ABOUT-START */
+    .section-about .about-text p {
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+    }
+
+    .about-list {
+      margin-top: 1rem;
+      padding-left: 1.2rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.5rem;
+      color: #e2e8f0;
+    }
+
+    .about-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .about-btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      background-color: #1e293b;
+      color: #93c5fd;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .about-btn:hover {
+      background-color: #334155;
+      color: #bfdbfe;
+    }
+
+    /* CSS:ABOUT-END */
+
+
+    /* =========================================================
+        CSS:SKILLS
+        ========================================================= */
+    /* CSS:SKILLS-START */
+    .section-skills p {
+      color: #cbd5e1;
+    }
+
+    /* CSS:SKILLS-END */
+
+
+    /* =========================================================
+        CSS:PROJECTS
+        ========================================================= */
+    /* CSS:PROJECTS-START */
+    .section-projects p {
+      color: #cbd5e1;
+    }
+
+    /* CSS:PROJECTS-END */
+
+
+    /* =========================================================
+        CSS:CONTACT
+        ========================================================= */
+    /* CSS:CONTACT-START */
+    .section-contact p {
+      color: #cbd5e1;
+    }
+
+    .contact-list {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-link {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      color: #38bdf8;
+    }
+
+    /* CSS:CONTACT-END */
+
+
+    /* =========================================================
+        CSS:RWD
+        ========================================================= */
+    /* CSS:RWD-START */
+    @media (min-width: 768px) {
+      .section-hero .hero-title {
+        font-size: 2.6rem;
+      }
+
+      .section-about .container,
+      .section-projects .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+    }
+
+    /* CSS:RWD-END */
   </style>
 </head>
+
+
 <body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav-brand" href="#hero">Your Name · Frontend Dev</a>
+      <nav class="nav-links">
+        <a class="nav-link" href="#hero">首頁</a>
+        <a class="nav-link" href="#about">關於我</a>
+        <a class="nav-link" href="#skills">技能</a>
+        <a class="nav-link" href="#projects">作品集</a>
+        <a class="nav-link" href="#contact">聯絡我</a>
+      </nav>
+    </div>
   </header>
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero" class="section section-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <h1 id="hero-heading" class="hero-title">這裡是 Hero 區主視覺（占位內容）</h1>
+
+        <p class="hero-text">
+          此區將放置個人一句話介紹、核心職稱（Frontend Developer）、行動呼籲等正式文案。
+        </p>
+
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&h=600&q=80"
+            alt="一位前端開發者在筆電前撰寫程式碼的示意圖" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="section section-about" aria-labelledby="about-heading">
+      <div class="container">
+
+        <div class="about-text">
+          <h2 id="about-heading" class="section-title">關於我</h2>
+
+          <p>我目前是一名前端工程師，同時從事教學與接案，專注在網頁前端開發、UI 互動、網站效能優化等領域。</p>
+
+          <p>我重視清楚的溝通與合作效率，喜歡把複雜的事情講得簡單，也樂於教學與分享知識。</p>
+
+          <ul class="about-list">
+            <li>網站前端開發：專案規劃、切版、功能實作、互動與動畫。</li>
+            <li>技術教學：把複雜概念拆解成人人聽得懂的方式。</li>
+            <li>接案協作：可協助企業或個人打造完整產品頁或行銷頁。</li>
+          </ul>
+
+          <div class="about-buttons">
+            <a href="#projects" class="about-btn">查看作品集</a>
+            <a href="#contact" class="about-btn">聯絡我</a>
+          </div>
+        </div>
+
+        <div>
+          <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=800&h=600&q=80"
+            alt="專注撰寫程式碼的前端工程師示意照片" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div>
+          <h2 id="projects-heading" class="section-title">作品集（占位內容）</h2>
+          <p>這裡是 Projects 區占位內容。</p>
+        </div>
+
+        <div>
+          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=800&h=600&q=80"
+            alt="展示網頁程式碼與介面的示意圖" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading" class="section-title">聯絡我（占位內容）</h2>
+
+        <div class="contact-list">
+          <a class="contact-link" href="mailto:hello@example.com">Email：hello@example.com</a>
+          <a class="contact-link" href="https://github.com/yourname">GitHub：yourname</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/yourname">LinkedIn：yourname</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2025 Your Name · Frontend Dev. 保留所有權利。
   </footer>
+
 </body>
+
 </html>
